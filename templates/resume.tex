@@ -48,7 +48,12 @@
 \thispagestyle{empty}
 
 % Custom section fonts
+\makeatletter
+\let\origlatexwarning\@latex@warning
+\let\@latex@warning\@gobble
 \usepackage{sectsty}
+\let\@latex@warning\origlatexwarning
+\makeatother
 \sectionfont{\rmfamily\scshape\Large}
 \subsectionfont{\rmfamily\mdseries\itshape\scshape\large}
 \subsubsectionfont{\rmfamily\mdseries\itshape\large}
