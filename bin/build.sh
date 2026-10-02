@@ -35,4 +35,4 @@ while IFS= read -r src; do
     printf "%s building %s… " "$(date)" "$rel"
     build "$src" "$template" "$pdf" "$docx"
   fi
-done < <(find "$INPUT_DIR" -type f \( -name '*.markdown' -o -name '*.md' \) | sort)
+done < <(find -L "$INPUT_DIR" -type f \( -name '*.markdown' -o -name '*.md' \) | sort)

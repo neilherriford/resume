@@ -9,7 +9,7 @@ COVER_TEMPLATE=${COVER_TEMPLATE:-/resume/templates/cover-letter.tex}
 mkdir -p "$INPUT_DIR"
 
 while true; do
-  { find "$INPUT_DIR" -type f \( -name '*.markdown' -o -name '*.md' \); echo "$RESUME_TEMPLATE"; echo "$COVER_TEMPLATE"; } \
+  { find -L "$INPUT_DIR" -type f \( -name '*.markdown' -o -name '*.md' \); echo "$RESUME_TEMPLATE"; echo "$COVER_TEMPLATE"; } \
     | ENTR_INOTIFY_WORKAROUND=true entr -dn /resume/bin/build.sh
   sleep 1
 done
