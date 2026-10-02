@@ -1,21 +1,13 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 RUN apt-get update; \
 apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-xetex entr;
 
-ENV SOURCE=/resume/markdown/resume.markdown \
-  TEMPLATE=/resume/templates/resume-template.tex \
-  PDF_OUTPUT=/resume/output/resume.pdf \
-  DOCX_OUTPUT=/resume/output/resume.docx
+ENV INPUT_DIR=/resume/input \
+  OUTPUT_DIR=/resume/output \
+  RESUME_TEMPLATE=/resume/templates/resume.tex \
+  COVER_TEMPLATE=/resume/templates/cover-letter.tex
 
-COPY bin /bin
-
-RUN chmod +x /bin/build-resume.sh ; \
-  chmod +x /bin/watcher.sh
-
-RUN mkdir /resume ; \
-  mkdir /resume/output
 WORKDIR /resume
 
-ENTRYPOINT /bin/watcher.sh
-
+ENTRYPOINT ["/resume/bin/watcher.sh"]

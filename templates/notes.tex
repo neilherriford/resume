@@ -1,0 +1,71 @@
+% LaTeX Phone interview notes Pandoc Template
+% Based on John Bokma's template https://github.com/john-bokma/resume-pandoc
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{underscore}
+\usepackage[parfill]{parskip}
+\usepackage{lmodern}
+\usepackage[svgnames]{xcolor}
+\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xstring}
+
+% Your name on the resume
+\def\name{$name$}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor=blue,
+  linkcolor=magenta,
+  pdfauthor = {\name},
+  pdfkeywords = {$keywords$},
+  pdftitle = {\name: Phone interview notes},
+  pdfsubject = {Phone interview notes},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={7.0in, 9.5in},
+  left=0.75in,
+  top=0.75in
+}
+
+% Fix  for "! Undefined control sequence. <recently read> \tightlist",
+% see: https://github.com/osener/markup.rocks/issues/4
+% I have this issue with Pandoc 1.17.2
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Page number is top right, and it is possible to control the rest of
+% the header.
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\scshape\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\scshape\large}
+\subsubsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Section numbers or not (default)
+\setcounter{secnumdepth}{0}
+
+% By putting an empty \item[] at the start of the list, the list
+% starts on a new line.
+\setlist[itemize]{leftmargin=1em,label={--},before=\item[]}
+
+\setlist[description]{leftmargin=0em, style=sameline}
+
+% Don't use monospace font for URLs
+\urlstyle{same}
+
+\begin{document}
+$body$
+\end{document}
