@@ -25,4 +25,4 @@ Builds everything stale on start, then rebuilds when anything in `input/` or `te
 New files in `input/` are picked up automatically.
 
 ## Credits
-Resume template based on John [Bokma's template](https://github.com/john-bokma/resume-pandoc)
+Resume template based on [John Bokma's template](https://github.com/john-bokma/resume-pandoc)
