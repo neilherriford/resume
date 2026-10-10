@@ -1,7 +1,7 @@
 ---
 name: Name
 keywords: Keywords
-left-column:
+contact-row:
   - '\textbf{Title}'
   - '[email](mailto:email@example.com)'
   - '[LinkedIn](http://www.example.com)'
