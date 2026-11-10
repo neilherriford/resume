@@ -12,6 +12,8 @@ Files named `cover-letter*` use the cover letter template, everything else uses 
 `input/foo.ltd/resume.markdown` builds to `output/foo.ltd/resume.pdf` and `output/foo.ltd/resume.docx`.
 
 ## Building the docker image
+See `make help` for more details.
+
 ```bash
 docker build -t resume-builder --progress plain .
 ```
@@ -23,6 +25,10 @@ docker run --rm --mount type=bind,src=`pwd`,dst=/resume --name resume-builder re
 
 Builds everything stale on start, then rebuilds when anything in `input/` or `templates/` changes.
 New files in `input/` are picked up automatically.
+
+### Spell check
+Now runs `aspell` and warns in the console if a document contains misspellings.  Use the `make` command `sync-spell` to sync your custom macOS dictionary to the container.
+
 
 ## Credits
 Resume template based on [John Bokma's template](https://github.com/john-bokma/resume-pandoc)
