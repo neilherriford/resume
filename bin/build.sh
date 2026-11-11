@@ -19,7 +19,7 @@ spellcheck() {
   [ -r "$SPELL_WORDS" ] && cat "$SPELL_WORDS" >> "$dict"
   # Plain-text output drops YAML metadata, URLs and LaTeX, leaving the prose.
   words=$(pandoc "$src" --from markdown+yaml_metadata_block --to plain 2>/dev/null \
-    | aspell list --lang=en --encoding=utf-8 --personal="$dict" | sort -u | paste -sd, - | sed 's/,/, /g')
+    | sed "s/’/'/g" | aspell list --lang=en --encoding=utf-8 --personal="$dict" | sort -u | paste -sd, - | sed 's/,/, /g')
   rm -f "$dict"
   [ -n "$words" ] && printf "  🛑 possible misspellings in %s: %s\n" "$rel" "$words"
   return 0
